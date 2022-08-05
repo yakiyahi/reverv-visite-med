@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { Patient } from './patient.entity';
 import { PatientService } from './patient.service';
 
@@ -9,6 +9,10 @@ export class PatientController {
     @Get()
     getPatients():Promise<Patient[]>{
         return this.patientService.findAll();
+    }
+    @Post()
+    savePatient(@Body() p:Patient):Promise<Patient>{
+        return this.patientService.savePatient(p);
     }
     @Get('/:num')
     getPatientById(@Param('num') num:string):Promise<Patient>{

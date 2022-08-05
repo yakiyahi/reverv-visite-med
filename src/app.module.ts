@@ -4,6 +4,10 @@ import { typeOrmConfig } from './config/typeorm.config';
 import { PatientController } from './patient/patient.controller';
 import { Patient } from './patient/patient.entity';
 import { PatientModule } from './patient/patient.module';
+import { MedecinModule } from './medecin/medecin.module';
+import { Medecin } from './medecin/medecin.entity';
+import { ReserverModule } from './reserver/reserver.module';
+import { Reserver } from './reserver/reserver.entity';
 
 @Module({
   imports: [
@@ -15,9 +19,11 @@ import { PatientModule } from './patient/patient.module';
         username:"postgres",
         password:"yakiyahi",
         database:"reserv_visite_medicale",
-        entities:[Patient,],
+        entities:[Patient,Medecin,Reserver],
         synchronize:true,
       }),
-    PatientModule],
+    PatientModule,
+    MedecinModule,
+    ReserverModule],
 })
 export class AppModule {}

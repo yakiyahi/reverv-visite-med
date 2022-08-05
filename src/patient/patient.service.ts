@@ -25,4 +25,7 @@ export class PatientService {
     async remove(numPat: string):Promise<void>{
          await this.patientRepository.delete(numPat);
     }
+    async savePatient(p:Patient):Promise<Patient>{
+        return await this.patientRepository.save(p);
+    }
 }
